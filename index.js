@@ -11,7 +11,9 @@ class AuthorizeNet extends require('@akayami/payment-processor-adapter-shared/ab
 		super();
 		this.config = {
 			apiLoginKey: '6g7Vt8G8',
-			transactionKey: '5664QcEeeK26aMZg'
+			transactionKey: '5664QcEeeK26aMZg',
+			key: 'Simon',
+			endpoint: 'https://apitest.authorize.net/xml/v1/request.api'
 		};
 		this.config = merge(this.config, config);
 		this.duplicateWindow = new ApiContracts.SettingType();
@@ -148,6 +150,7 @@ class AuthorizeNet extends require('@akayami/payment-processor-adapter-shared/ab
 	execute(createRequest, extra, cb) {
 
 		const ctrl = new ApiControllers.CreateTransactionController(createRequest.getJSON());
+		ctrl.setEnvironment(this.config.endpoint);
 
 		ctrl.execute(() => {
 			const apiResponse = ctrl.getResponse();
