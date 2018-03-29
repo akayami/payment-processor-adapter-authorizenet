@@ -6,5 +6,5 @@ const config = {
 };
 
 describe('Authorize.net Integration tests', () => {
-	const tests = require('@akayami/payment-processor-adapter-shared/test/shared')(processorClass, config);
+	require('@akayami/payment-processor-adapter-shared/test/shared')(processorClass, config);
 });
