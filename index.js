@@ -1,7 +1,7 @@
 const ApiContracts = require('authorizenet').APIContracts;
 const ApiControllers = require('authorizenet').APIControllers;
 const merge = require('merge');
-const AuthorizeResponseError = require('./lib/error/response');
+const AuthorizeResponseError = require('./lib/error');
 const Response = require('@akayami/payment-processor-adapter-shared/response');
 const ResponseError = require('@akayami/payment-processor-adapter-shared/abstract/responseError');
 
@@ -10,8 +10,8 @@ class AuthorizeNet extends require('@akayami/payment-processor-adapter-shared/ab
 	constructor(config) {
 		super();
 		this.config = {
-			apiLoginKey: '6g7Vt8G8',
-			transactionKey: '5664QcEeeK26aMZg',
+			apiLoginKey: 'loginkey',
+			transactionKey: 'trxkey',
 			key: 'Simon',
 			endpoint: 'https://apitest.authorize.net/xml/v1/request.api'
 		};
@@ -52,7 +52,13 @@ class AuthorizeNet extends require('@akayami/payment-processor-adapter-shared/ab
 		createRequest.setMerchantAuthentication(merchantAuthenticationType);
 		createRequest.setTransactionRequest(transactionRequestType);
 
-		this.execute(createRequest, String(cc.number).substr(cc.number.length - 4), cb);
+		this.execute(createRequest, String(cc.number).substr(cc.number.length - 4), (err, result) => {
+			if(err) {
+				cb(new this.error.auth(err));
+			} else {
+				cb(null, result);
+			}
+		});
 	}
 
 	settle(compositeId, amount, options, cb) {
@@ -165,23 +171,23 @@ class AuthorizeNet extends require('@akayami/payment-processor-adapter-shared/ab
 					if (response.getTransactionResponse().getMessages() != null) {
 						return cb(null, new Response([response.getTransactionResponse().getTransId(), extra].join('|')));
 					} else {
-						return cb(new ResponseError(new AuthorizeResponseError(
+						return cb(new AuthorizeResponseError(
 							response.getTransactionResponse().getErrors().getError()[0].getErrorText(),
 							response.getTransactionResponse().getErrors().getError()[0].getErrorCode()
-						)));
+						));
 					}
 				} else {
 					if (response.getTransactionResponse() != null && response.getTransactionResponse().getErrors() != null) {
-						return cb(new ResponseError(new AuthorizeResponseError(
+						return cb(new AuthorizeResponseError(
 							response.getTransactionResponse().getErrors().getError()[0].getErrorText(),
 							response.getTransactionResponse().getErrors().getError()[0].getErrorCode()
-						)));
+						));
 					}
 					else {
-						return cb(new ResponseError(new AuthorizeResponseError(
+						return cb(new AuthorizeResponseError(
 							response.getMessages().getMessage()[0].getText(),
 							response.getMessages().getMessage()[0].getCode()
-						)));
+						));
 					}
 				}
 			} else {

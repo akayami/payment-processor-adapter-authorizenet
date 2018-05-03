@@ -8,7 +8,7 @@ Yarn version:
   1.5.1
 
 Node version: 
-  9.9.0
+  9.11.1
 
 Platform: 
   linux x64
@@ -16,18 +16,18 @@ Platform:
 npm manifest: 
   {
     "name": "@akayami/payment-processor-adapter-authorizenet",
-    "version": "1.1.0",
+    "version": "1.1.2",
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
-      "@akayami/payment-processor-adapter-shared": "^0.0.5",
+      "@akayami/payment-processor-adapter-shared": "^0.1.1",
       "authorizenet": "^1.0.4",
       "merge": "^1.2.0"
     },
     "devDependencies": {
       "chai": "^4.1.2",
       "eslint": "^4.19.1",
-      "mocha": "^5.0.5"
+      "mocha": "^5.1.1"
     },
     "scripts": {
       "lint": "node_modules/.bin/eslint --fix .",
@@ -43,11 +43,13 @@ Lockfile:
   # yarn lockfile v1
   
   
-  "@akayami/payment-processor-adapter-shared@^0.0.5":
-    version "0.0.5"
-    resolved "https://registry.yarnpkg.com/@akayami/payment-processor-adapter-shared/-/payment-processor-adapter-shared-0.0.5.tgz#98d988fe8ca2274c1a6f3e9c3c3e03902293e12f"
+  "@akayami/payment-processor-adapter-shared@^0.1.1":
+    version "0.1.1"
+    resolved "https://registry.yarnpkg.com/@akayami/payment-processor-adapter-shared/-/payment-processor-adapter-shared-0.1.1.tgz#ddb196c18548ed8e074f9d57c66dde8c69b332ad"
     dependencies:
       chai "^4.1.2"
+      clone "^2.1.1"
+      credit-card-type "^6.3.0"
       uuid "^3.2.1"
   
   acorn-jsx@^3.0.0:
@@ -264,6 +266,10 @@ Lockfile:
     version "2.2.0"
     resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
   
+  clone@^2.1.1:
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.1.tgz#d217d1e961118e3ac9a4b8bba3285553bf647cdb"
+  
   co@^4.6.0:
     version "4.6.0"
     resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -308,6 +314,10 @@ Lockfile:
   core-util-is@1.0.2, core-util-is@~1.0.0:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+  
+  credit-card-type@^6.3.0:
+    version "6.3.0"
+    resolved "https://registry.yarnpkg.com/credit-card-type/-/credit-card-type-6.3.0.tgz#6e6c13e7e592f83b067c24429486a4f250eaa030"
   
   cross-spawn@^5.1.0:
     version "5.1.0"
@@ -804,7 +814,7 @@ Lockfile:
     version "1.2.0"
     resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
   
-  minimatch@^3.0.2, minimatch@^3.0.4:
+  minimatch@3.0.4, minimatch@^3.0.2, minimatch@^3.0.4:
     version "3.0.4"
     resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
     dependencies:
@@ -820,9 +830,9 @@ Lockfile:
     dependencies:
       minimist "0.0.8"
   
-  mocha@^5.0.5:
-    version "5.0.5"
-    resolved "https://registry.yarnpkg.com/mocha/-/mocha-5.0.5.tgz#e228e3386b9387a4710007a641f127b00be44b52"
+  mocha@^5.1.1:
+    version "5.1.1"
+    resolved "https://registry.yarnpkg.com/mocha/-/mocha-5.1.1.tgz#b774c75609dac05eb48f4d9ba1d827b97fde8a7b"
     dependencies:
       browser-stdout "1.3.1"
       commander "2.11.0"
@@ -832,6 +842,7 @@ Lockfile:
       glob "7.1.2"
       growl "1.10.3"
       he "1.1.1"
+      minimatch "3.0.4"
       mkdirp "0.5.1"
       supports-color "4.4.0"
   
@@ -1236,7 +1247,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 3
   Command: sh
   Arguments: -c mocha
   Directory: /home/tomasz/dev/payment-processor-adapter-authorizenet
