@@ -2,13 +2,14 @@
 # yarn lockfile v1
 
 
-"@akayami/payment-processor-adapter-shared@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@akayami/payment-processor-adapter-shared/-/payment-processor-adapter-shared-0.1.1.tgz#ddb196c18548ed8e074f9d57c66dde8c69b332ad"
+"@akayami/payment-processor-adapter-shared@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@akayami/payment-processor-adapter-shared/-/payment-processor-adapter-shared-0.2.0.tgz#abb16b565cf00d7f693d3ededf2473783982c335"
   dependencies:
     chai "^4.1.2"
     clone "^2.1.1"
     credit-card-type "^6.3.0"
+    merge "^1.2.0"
     uuid "^3.2.1"
 
 acorn-jsx@^3.0.0:

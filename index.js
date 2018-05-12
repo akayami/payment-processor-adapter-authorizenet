@@ -169,7 +169,7 @@ class AuthorizeNet extends require('@akayami/payment-processor-adapter-shared/ab
 			if (response != null) {
 				if (response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
 					if (response.getTransactionResponse().getMessages() != null) {
-						return cb(null, new Response([response.getTransactionResponse().getTransId(), extra].join('|')));
+						return cb(null, new Response([response.getTransactionResponse().getTransId(), extra].join('|'), response.getTransactionResponse().getAuthCode()));
 					} else {
 						return cb(new AuthorizeResponseError(
 							response.getTransactionResponse().getErrors().getError()[0].getErrorText(),
