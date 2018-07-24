@@ -44,7 +44,7 @@ const config = {
 			// 				code: '200'
 			// 			}
 		],
-		'master-card': [
+		'mastercard': [
 			{
 				name: 'Approved',
 				number: '5424000000000015'
