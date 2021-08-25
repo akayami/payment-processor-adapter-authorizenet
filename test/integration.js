@@ -5,8 +5,8 @@ const codes = require('@akayami/payment-processor-adapter-shared/lib/constants')
 const config = {
 	name: 'Authorize.net',
 	conf: {
-		apiLoginKey: '6g7Vt8G8',
-		transactionKey: '5664QcEeeK26aMZg',
+		apiLoginKey: '56YWuq4E',
+		transactionKey: '67r4k3BSkVS2993S',
 		key: 'Simon',
 		endpoint: 'https://apitest.authorize.net/xml/v1/request.api'
 	},
@@ -109,36 +109,37 @@ const config = {
 			// 	code: '200'
 			// }
 		],
-		'diners-club': [
-			{
-				name: 'Approved',
-				number: '36462462742008'
-			},
-			{
-				name: 'Declined - Invalid Number',
-				number: '36462462742009',
-				error: true,
-				code: codes.INVALID
-			},
-			// {
-			// 	name: 'Test Case 3',
-			// 	number: '36256000000634',
-			// 	error: true,
-			// 	code: '102'
-			// },
-			// {
-			// 	name: 'Test Case 4',
-			// 	number: '38865000000705',
-			// 	error: true,
-			// 	code: '103'
-			// },
-			// {
-			// 	name: 'Test Case 5',
-			// 	number: '30450000000985',
-			// 	error: true,
-			// 	code: '200'
-			// }
-		],
+		// Authorize seems to not support dinters-club very well.
+		// 'diners-club': [
+		// 	{
+		// 		name: 'Approved',
+		// 		number: '38000000000006'
+		// 	},
+		// 	{
+		// 		name: 'Declined - Invalid Number',
+		// 		number: '36462462742009',
+		// 		error: true,
+		// 		code: codes.INVALID
+		// 	},
+		// 	// {
+		// 	// 	name: 'Test Case 3',
+		// 	// 	number: '36256000000634',
+		// 	// 	error: true,
+		// 	// 	code: '102'
+		// 	// },
+		// 	// {
+		// 	// 	name: 'Test Case 4',
+		// 	// 	number: '38865000000705',
+		// 	// 	error: true,
+		// 	// 	code: '103'
+		// 	// },
+		// 	// {
+		// 	// 	name: 'Test Case 5',
+		// 	// 	number: '30450000000985',
+		// 	// 	error: true,
+		// 	// 	code: '200'
+		// 	// }
+		// ],
 		'discover': [
 			{
 				name: 'Approved',
